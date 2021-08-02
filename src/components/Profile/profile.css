@@ -1,0 +1,16 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+}
+.container input {
+  width: fit-content;
+}
+.pro-pic {
+  width: 10rem;
+  padding: 0.1rem;
+  border: 1px solid #000;
+}
+.bio-txt {
+  width: fit-content;
+}
