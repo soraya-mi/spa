@@ -2,10 +2,9 @@ import React from "react";
 import useProfile from "../../hooks/useProfile";
 import useProfilAction from "../../hooks/usProfilAction";
 import "./profile.css";
+
 const Profile = () => {
   const data = useProfile();
-  console.log("data");
-  console.log(data);
   const setName = useProfilAction();
   const handleChangeName = (e) => {
     let newProfile = {

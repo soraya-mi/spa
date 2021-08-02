@@ -1,7 +1,8 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import CssBaseline from "@material-ui/core/CssBaseline";
-
+import HomeIcon from "@material-ui/icons/Home";
+import ContactPhoneIcon from "@material-ui/icons/ContactPhone";
+import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import {
   BrowserRouter as Router,
   Switch,
@@ -17,9 +18,6 @@ import {
   Container,
   Typography,
 } from "@material-ui/core";
-import HomeIcon from "@material-ui/icons/Home";
-import ContactPhoneIcon from "@material-ui/icons/ContactPhone";
-import AccountCircleIcon from "@material-ui/icons/AccountCircle";
 import Contact from "../src/components/Contact/contact";
 import Profile from "../src/components/Profile/Profile";
 import ProfileProvider from "../src/components/ProfileProvider";
@@ -47,31 +45,30 @@ function App() {
   const items = [
     {
       name: "Home",
-      to: "/",
+      path: "/",
       icon: <HomeIcon />,
       component: "Home page",
       exact: true,
     },
     {
       name: "Profile",
-      to: "/profile",
+      path: "/profile",
       icon: <AccountCircleIcon />,
       component: <Profile />,
     },
     {
       name: "Contact",
-      to: "/contact",
+      path: "/contact",
       icon: <ContactPhoneIcon />,
       component: <Contact />,
     },
     {
-      to: "*",
+      path: "*",
       component: "404 not found",
     },
   ];
   return (
     <ProfileProvider>
-      <CssBaseline />
       <Router>
         <div style={{ display: "flex" }}>
           <Drawer
@@ -86,14 +83,13 @@ function App() {
                 <NavLink
                   key={item.name}
                   exact={item.exact || false}
-                  to={item.to}
+                  to={item.path}
                   className={classes.link}
                   activeClassName={classes.active}
                 >
                   <ListItem button>
                     <ListItemIcon>{item.icon}</ListItemIcon>
                     <ListItemText primary={item.name} />
-                    {console.log(item.exact || false)}
                   </ListItem>
                 </NavLink>
               ))}
@@ -101,7 +97,7 @@ function App() {
           </Drawer>
           <Switch>
             {items.map((item) => (
-              <Route exact path={item.to}>
+              <Route exact path={item.path}>
                 <Container>
                   <Typography
                     variant="h3"
