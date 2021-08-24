@@ -4,63 +4,52 @@ import useProfilAction from "../../hooks/usProfilAction";
 import "./profile.css";
 
 const Profile = () => {
-  const data = useProfile();
-  const setName = useProfilAction();
-  const handleChangeName = (e) => {
-    let newProfile = {
-      name: e.target.value,
-      family: data.family,
-      bio: data.bio,
+    console.log("profile");
+    const data = useProfile();
+    const setName = useProfilAction();
+    const handleChangeName = (e) => {
+        let newProfile = {
+         ...data,   name: e.target.value
+        };
+        setName(newProfile);
     };
-    setName(newProfile);
-  };
-  const handleChangeFamily = (e) => {
-    let newProfile = {
-      name: data.name,
-      family: e.target.value,
-      bio: data.bio,
+    const handleChangeFamily = (e) => {
+        let newProfile = {
+           ...data, family: e.target.value
+        };
+        setName(newProfile);
     };
-    setName(newProfile);
-  };
-  const handleChangeBio = (e) => {
-    let newProfile = {
-      name: data.name,
-      family: data.family,
-      bio: e.target.value,
+    const handleChangeBio = (e) => {
+        let newProfile = {
+            ...data, bio: e.target.value
+        };
+        setName(newProfile);
     };
-    setName(newProfile);
-  };
-  return (
-    <div className="container">
-      <img
-        className="pro-pic"
-        src="https://icon-library.com/images/female-user-icon/female-user-icon-29.jpg"
-        alt="profile"
-      />
-      <label htmlFor="fname">First name:</label>
-      <input
-        type="text"
-        id="fname"
-        name="fname"
-        value={data.name}
-        onChange={handleChangeName}
-      />
-      <label htmlFor="lname">Last name:</label>
-      <input
-        type="text"
-        id="lname"
-        name="lname"
-        value={data.family}
-        onChange={handleChangeFamily}
-      />
-      <label htmlFor="bio">Bio:</label>
-      <textarea
-        onChange={handleChangeBio}
-        value={data.bio}
-        className="bio-txt"
-      ></textarea>
-    </div>
-  );
+    return ( 
+    < div className = "container" >
+        <img className = "pro-pic"
+        src = {data.image}
+        alt = "profile" />
+        <label htmlFor = "name" > First name: </label> 
+         <input type = "text"
+        id = "name"
+        name = "name"
+        value = { data.name }
+        onChange = { handleChangeName }/> 
+        <label htmlFor = "lname" > Last name: </label> 
+        <input type = "text"
+        id = "family"
+        name = "family"
+        value = { data.family }
+        onChange = { handleChangeFamily }
+        />
+         <label htmlFor = "bio" > Bio: </label> 
+         <textarea onChange = { handleChangeBio }
+        value = { data.bio }
+        className = "bio-txt" name="bio">
+        </textarea> 
+        </div>
+    );
 };
 export default Profile;
 
